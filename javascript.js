@@ -50,18 +50,27 @@ function playRound(playerSelection,computerSelection) {
      (playerSelection == 'scissors' && computerSelection == 'paper') ?
      "You win! Scissors beats Paper" :
      'Something broke';
-    return result;
+     if (result.includes('win')) {
+        playerWin++
+    } else if (result.includes('lose')) {
+        computerWin++
+    }
 }
 
 function game() {
     playRound(getPlayerChoice(),getComputerChoice());
+    console.log(result)
     playRound(getPlayerChoice(),getComputerChoice());
+    console.log(result)
     playRound(getPlayerChoice(),getComputerChoice());
+    console.log(result)
     playRound(getPlayerChoice(),getComputerChoice());
+    console.log(result)
     playRound(getPlayerChoice(),getComputerChoice());
+    console.log(result)
 }
 
-console.log(playRound(getPlayerChoice(),getComputerChoice()))
+game()
 
 /**playRound(getPlayerChoice(),getComputerChoice());
     playRound(getPlayerChoice(),getComputerChoice());
