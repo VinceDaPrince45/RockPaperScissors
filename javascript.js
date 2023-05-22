@@ -5,17 +5,13 @@
  * once both player and computer choices are determined, make conditionals to determine who wins
  */
 
-
-
-
-
-
 let computerRock = 1;
 let computerPaper = 2;
 let computerScissor = 3;
 let playerWin = 0;
 let computerWin = 0;
 let result;
+let winner;
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random()*(3-1+1)+1);
@@ -50,7 +46,7 @@ function playRound(playerSelection,computerSelection) {
      (playerSelection == 'scissors' && computerSelection == 'paper') ?
      "You win! Scissors beats Paper" :
      'Something broke';
-     if (result.includes('win')) {
+     if (result.includes('win!')) {
         playerWin++
     } else if (result.includes('lose')) {
         computerWin++
@@ -68,12 +64,12 @@ function game() {
     console.log(result)
     playRound(getPlayerChoice(),getComputerChoice());
     console.log(result)
+    winner = (playerWin > computerWin) ?
+    "Player wins!" :
+    (playerWin < computerWin) ?
+    "Computer wins!" :
+    "It's a tie!";
+    console.log(winner)
 }
 
-game()
-
-/**playRound(getPlayerChoice(),getComputerChoice());
-    playRound(getPlayerChoice(),getComputerChoice());
-    playRound(getPlayerChoice(),getComputerChoice());
-    playRound(getPlayerChoice(),getComputerChoice());
-    playRound(getPlayerChoice(),getComputerChoice()); */
+game();
