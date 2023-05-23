@@ -46,31 +46,116 @@ function playRound(playerSelection,computerSelection) {
    } else if (result.includes('lose')) {
        computerWin++
    }
+   eval();
 }
+
+//create buttons
+//onclick, tell the button to update score and evaluate whether or not the wins are at 5
+//if wins are at 5, congratulate and disable buttons
 
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors')
-while (playerWin !== 5 && computerWin !== 5) {
-    let playerSelection;    
-    rock.addEventListener('click', () => {
-        playerSelection = 'rock';
-        playRound(playerSelection,getComputerChoice());
-        console.log(result);
-    });
-    paper.addEventListener('click', () => {
-        playerSelection = 'paper';
-        playRound(playerSelection,getComputerChoice());
-        console.log(result);
-    });
-    scissors.addEventListener('click', () => {
-        playerSelection = 'scissors';
-        playRound(playerSelection,getComputerChoice());
-        console.log(result);
-    });
+const scissors = document.querySelector('#scissors');
+const container = document.querySelector('.container');
+
+function updateScore() {
+    document.getElementById('playerScore').innerHTML = `Player Score: ${playerWin}`;
+    document.getElementById('computerScore').innerHTML = `Computer Score: ${computerWin}`;
 }
-console.log(playerWin,computerWin)
-  
+
+function eval() {
+    if (playerWin === 5) {
+        const content = document.createElement('div');
+        content.textContent = 'PLAYER WINS';
+        container.appendChild(content);
+        document.getElementById("rock").disabled = true;
+        document.getElementById("paper").disabled = true;
+        document.getElementById("scissors").disabled = true;
+
+    } else if (computerWin === 5) {
+        const content = document.createElement('div');
+        content.textContent = 'COMPUTER WINS';
+        container.appendChild(content);
+        document.getElementById("rock").disabled = true;
+        document.getElementById("paper").disabled = true;
+        document.getElementById("scissors").disabled = true;
+    }
+}
+
+let playerSelection; 
+
+rock.addEventListener('click', () => {
+    playerSelection = 'rock';
+    playRound(playerSelection, getComputerChoice());
+    updateScore();
+});
+paper.addEventListener('click', () => {
+    playerSelection = 'rock';
+    playRound(playerSelection, getComputerChoice());
+    updateScore();
+});
+scissors.addEventListener('click', () => {
+    playerSelection = 'rock';
+    playRound(playerSelection, getComputerChoice());
+    updateScore();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors')
+
+
+let playerSelection; 
+
+rock.addEventListener('click', () => {
+    playerSelection = 'rock';
+    playRound(playerSelection,getComputerChoice());
+    console.log(result);
+    if (playerWin === 5 ) {
+        console.log('YOU WIN')
+    } else if (computerWin === 5) {
+        console.log('COMPUTER WINS')
+    }
+});
+paper.addEventListener('click', () => {
+    playerSelection = 'paper';
+    playRound(playerSelection,getComputerChoice());
+    console.log(result);
+    if (playerWin === 5) {
+        console.log('YOU WIN')
+    } else if (computerWin === 5) {
+        console.log('COMPUTER WINS')
+    }
+});
+scissors.addEventListener('click', () => {
+    playerSelection = 'scissors';
+    playRound(playerSelection,getComputerChoice());
+    console.log(result);
+    if (playerWin === 5) {
+        console.log('YOU WIN')
+    } else if (computerWin === 5) {
+        console.log('COMPUTER WINS')
+    }
+});
+
+const player = document.querySelector('.player');
+const computer = document.querySelector('.computer');
+player.textContent = `player score: ${playerWin}`;
 
 
 /**function game() {
