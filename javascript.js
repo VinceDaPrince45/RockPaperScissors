@@ -82,21 +82,28 @@ function eval() {
     }
 }
 
+function printWhoWon() {
+    document.getElementById('status').innerHTML = result;
+}
+
 let playerSelection; 
 
 rock.addEventListener('click', () => {
     playerSelection = 'rock';
     playRound(playerSelection, getComputerChoice());
+    printWhoWon();
     updateScore();
 });
 paper.addEventListener('click', () => {
-    playerSelection = 'rock';
+    playerSelection = 'paper';
     playRound(playerSelection, getComputerChoice());
+    printWhoWon();
     updateScore();
 });
 scissors.addEventListener('click', () => {
-    playerSelection = 'rock';
+    playerSelection = 'scissors';
     playRound(playerSelection, getComputerChoice());
+    printWhoWon();
     updateScore();
 });
 
